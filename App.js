@@ -4,106 +4,135 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-nativ
 export default function App() {
 	const [valor1, setValor1] = useState("20");
 	const [valor2, seTvalor2] = useState("3");
+	const [resultado,setResultado]= useState("");
 	function somar()
 	{
-		let r=parseFloat(Valor1)+parseFloat(Valor2);
+		let r=parseFloat(valor1) + parseFloat(valor2);
 		setResultado(r);
 	}
-  return 
-	(
+	function subtrair()
+	{
+		let r=parseFloat(valor1) - parseFloat(valor2);
+		setResultado(r);
+	}
+	function multiplicar()
+	{
+		let r=parseFloat(valor1) * parseFloat(valor2);
+		setResultado(r);
+	}
+	function dividir()
+	{
+		let r=parseFloat(valor1) / parseFloat(valor2);
+		setResultado(r);
+	}
+	function exponencial()
+	{
+		let r=parseFloat(valor1) ** parseFloat(valor2);
+		setResultado(r);
+	}
+  return(
 	  
-		<View style={ styles.container }>
-		  <View style={ styles.bloco }>
-	<Text style={ styles.titulo }> Calculo Simples </Text>
-	</View>
-
-	   <View style={ styles.bloco }>
-	<Text style={ styles.text }> valor: 1 </Text>
-	<TextInput style={ styles.input } value={Valor1} onChangeText={(valor)=>setValor1(valor)} keyboardType="numeric"/>
-
-
-	</View>
-
-	   <View style={ styles.bloco }>
-	<Text style={ styles.text }> valor: 2 </Text>
-	<TextInput style={ styles.input }value={Valor2} onChangeText={(valor)=>setValor1(valor)} keyboardType="numeric"/>
-
-	   </View>
-
-	<View style={styles.bloco }>
-	</View>
-
-	<View style={ styles.bloco }>
-	<TouchableOpacity style={ styles.botao } onPress={somar}>
-	<Text style={ styles.TextBotao }>Somar</Text>
-	</TouchableOpacity>
-	</View>
-
-		<View style={ styles.bloco }>
-		
-			 <Text style={ styles.titulo }>Somar</Text>
-		 </View> 
-	 </View>
+		 <View style={styles.container}>
+		<View style={styles.bloco}>
+	  		<Text style={styles.titulo}>Calculadora Simples </Text>
+		</View>
+		<View style={styles.bloco}>
+			<Text> Valor 1: </Text>
+			<TextInput 
+				style={styles.input} 
+				value={valor1}
+				onChangeText={(valor)=>setValor1(valor)}
+				keyboardType="numeric"
+			/>
+		</View>
+		<View style={styles.bloco}>
+			<Text> Valor 2: </Text>
+			<TextInput 
+				style={styles.input}
+				value={valor2}
+				onChangeText={(valor)=>setValor2(valor)}
+				keyboardType="numeric"
+			/>
+		</View>
+		<View style={styles.bloco}>
+			<TouchableOpacity 
+				style={styles.botao}
+				onPress={somar}
+			>
+				<Text style={styles.textoBotao}>Somar</Text>
+			</TouchableOpacity>  
+		</View>
+		  <View style={styles.bloco}>
+			<TouchableOpacity 
+				style={styles.botao}
+				onPress={subtrair}
+			>
+				<Text style={styles.textoBotao}>Subtrair</Text>
+			</TouchableOpacity>  
+		</View>
+		   <View style={styles.bloco}>
+			<TouchableOpacity 
+				style={styles.botao}
+				onPress={multiplicar}
+			>
+				<Text style={styles.textoBotao}>Multiplicar</Text>
+			</TouchableOpacity>  
+		</View>
+		   <View style={styles.bloco}>
+			<TouchableOpacity 
+				style={styles.botao}
+				onPress={dividir}
+			>
+				<Text style={styles.textoBotao}>Dividir</Text>
+			</TouchableOpacity>  
+		</View>
+		   <View style={styles.bloco}>
+			<TouchableOpacity 
+				style={styles.botao}
+				onPress={exponencial}
+			>
+				<Text style={styles.textoBotao}>Exponencial</Text>
+			</TouchableOpacity>  
+		</View>
+		<View style={styles.bloco}>
+			<Text style={styles.titulo}> 
+				Resultado: {resultado}
+			</Text>
+		</View>
+    </View>
+	
   );
 }
 
 const styles = StyleSheet.create({
   container: {
- 
     flex: 1,
-  backgroundColor: "#DCDCDC",
-    padding: 10,
-border: "1px solid #000000",
-marginTop:8,
-
+	  backgroundColor:'#DC143C',
   },
-
-bloco:{
-marginTop:5,
-
-   
-},
-
-text: {
-marginLeft:"20%",
-},
-
-input:{
-
-fontSize:20,
-border: "2px solid #000000",
-backgroundColor:"#ffffff",
-marginLeft:"20%",
-marginRight:"20%",
-borderRadius: "8px",
-
-
-
-},
-
-titulo:{
-
-justifyContent: "center",
-textAlign: "center",
-fontSize:25,
-fontFamily:"impact",
-
-},
-botao:{
-
-backgroundColor: "#ffffff",
-textAlign: "center",
-marginLeft:"40%",
-marginRight:"40%",
-border: "2px solid #000000",
-borderRadius: "8px"
-
-},
-
-blocoText:{
-
-fontSize:30,
-fontFamily:"impact",
-color:"#fff"
-},
+  bloco:{
+	  marginTop:20,
+	  width:'80%',
+	  marginLeft:'10%'
+  },
+  titulo:{
+	  fontSize:30,
+	  textAlign:'center'
+  },
+  input:{
+	borderWidth:2,
+	fontSize:20,
+	borderRadius:10
+  },
+  botao:{
+	  backgroundColor:'#FF0000',
+	  borderRadius:10,
+  },
+  textoBotao:{
+	  color:'#000000',
+	  textAlign:'center',
+	  fontSize:20,
+  }
 });
+	
+ 
+		
